@@ -12,8 +12,6 @@ export const DropContext = ({ className, deleteKey }) => {
 
   const handleDrop = (e) => {
     e.preventDefault();
-    e.stopPropagation();
-
     if (draggedItem && !dropList.find((item) => item.id === draggedItem.id)) {
       const newDropList = [...dropList, draggedItem];
       setDropList(newDropList);
@@ -41,7 +39,7 @@ export const DropContext = ({ className, deleteKey }) => {
 
   return (
     <div
-      className="min-h-44 min-w-44 outline outline-1 h-full w-full"
+      className="min-h-[100px] min-w-[100px] outline"
       onDragOver={handleDragOver}
       onDrop={handleDrop}
     >
@@ -51,7 +49,7 @@ export const DropContext = ({ className, deleteKey }) => {
             key={idx}
             id={item.id}
             className={` ${
-              deleteKey ? "flex justify-between items-center" : `text-center`
+              deleteKey ? `flex justify-between items-center` : `text-center`
             } ${className}`}
           >
             {item.name}

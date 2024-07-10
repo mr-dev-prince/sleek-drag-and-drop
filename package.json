@@ -1,6 +1,6 @@
 {
   "name": "sleek-drag-and-drop",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
@@ -23,6 +23,7 @@
     "@types/react": "^18.3.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "rollup": "^4.18.1"
+    "rollup": "^4.18.1",
+    "tailwindcss": "^3.4.4"
   }
 }
