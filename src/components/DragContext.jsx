@@ -1,13 +1,12 @@
 import React, { useContext, useEffect } from "react";
 import { DragDropContext } from "../context/DragDropContext.js";
 
-export const DragContext = ({ content, className }) => {
-  const { dragList, setDragList, setDraggedItem } =
-    useContext(DragDropContext);
+export const DragContext = ({ content = [], className = "" }) => {
+  const { dragList, setDragList, setDraggedItem } = useContext(DragDropContext);
 
   const handleDragStart = (e, item) => {
     e.dataTransfer.effectAllowed = "move";
-    e.dataTransfer.setData("text/plain", item);
+    e.dataTransfer.setData("text/plain", item.id); // Pass item id as data
     setDraggedItem(item);
   };
 
@@ -33,7 +32,7 @@ export const DragContext = ({ content, className }) => {
             draggable
             key={item.id}
             id={item.id}
-            className={` text-center ${className}`}
+            className={`text-center ${className}`}
           >
             {item.name}
           </div>
@@ -41,4 +40,3 @@ export const DragContext = ({ content, className }) => {
     </div>
   );
 };
-

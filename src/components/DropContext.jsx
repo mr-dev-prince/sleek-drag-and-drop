@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { DragDropContext } from "../context/DragDropContext.js";
 
-export const DropContext = ({ className, deleteKey }) => {
+export const DropContext = ({ className = "", deleteKey = false }) => {
   const { draggedItem, dropList, setDropList, setDragList } =
     useContext(DragDropContext);
 
@@ -24,7 +24,9 @@ export const DropContext = ({ className, deleteKey }) => {
   };
 
   const handleDelete = (item) => {
-    const updatedDropList = dropList.filter((dropItem) => dropItem !== item);
+    const updatedDropList = dropList.filter(
+      (dropItem) => dropItem.id !== item.id
+    );
     setDropList(updatedDropList);
     setDragList((prevList) => [...prevList, item]);
     localStorage.setItem("dropList", JSON.stringify(updatedDropList));
@@ -39,17 +41,17 @@ export const DropContext = ({ className, deleteKey }) => {
 
   return (
     <div
-      className="min-h-[100px] min-w-[100px] outline"
+      className={`min-h-[100px] min-w-[100px] outline ${className}`}
       onDragOver={handleDragOver}
       onDrop={handleDrop}
     >
       {dropList &&
-        dropList.map((item, idx) => (
+        dropList.map((item) => (
           <div
-            key={idx}
+            key={item.id}
             id={item.id}
             className={` ${
-              deleteKey ? `flex justify-between items-center` : `text-center`
+              deleteKey ? "flex justify-between items-center" : "text-center"
             } ${className}`}
           >
             {item.name}
