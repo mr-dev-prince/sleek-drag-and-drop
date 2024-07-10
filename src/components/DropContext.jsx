@@ -41,7 +41,7 @@ export const DropContext = ({ className, deleteKey }) => {
 
   return (
     <div
-      className="h-full w-full"
+      className="min-h-44 min-w-44 outline outline-1 h-full w-full"
       onDragOver={handleDragOver}
       onDrop={handleDrop}
     >
